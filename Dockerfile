@@ -21,8 +21,8 @@ RUN sudo apt-get install -y nodejs
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 RUN sudo apt update
-RUN sudo apt install yarn
-RUN sudo apt-get install build-essential
+RUN sudo apt install yarn -y
+RUN sudo apt-get install build-essential -y
 
 # Fix permissions for code-server
 RUN sudo chown -R coder:coder /home/coder/.local
