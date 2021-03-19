@@ -18,7 +18,10 @@ RUN curl https://rclone.org/install.sh | sudo bash
 # Install NodeJS
 RUN sudo curl -fsSL https://deb.nodesource.com/setup_15.x | sudo bash -
 RUN sudo apt-get install -y nodejs
-RUN npm install --global yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+RUN sudo apt update
+RUN sudo apt install yarn
 
 # Fix permissions for code-server
 RUN sudo chown -R coder:coder /home/coder/.local
